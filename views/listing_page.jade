@@ -1,0 +1,27 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+
+
+head
+	title=title
+
+block body
+
+
+	.container
+		p Listing Title
+		+input-simple("text", "listingTitle", "Title")
+		p Listing Description
+		+input-simple("text", "listingDesc", "Decsription")
+		p Price
+		+input-group("$")
+			+input("number", "listingPrice", "eg. $50")
+		p Category
+		+dropdown ("Please Select One",[
+			{text:"A",index:"1"},
+			{text:"B", href:"#", index:"2"},
+			{text:"C", href:"#", index:"3"}
+		])
+		p Number of Items
+		+input-simple("number", "noItems", "eg.12")
+		p 
+		a.btn.btn-primary(type="submit") Submit
