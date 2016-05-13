@@ -1,0 +1,69 @@
+//
+   Created by lucas on 13/05/16.
+
+header.header-content(data-stick='true', style='')
+    .header-container
+        .top-bar.hidden-xs
+            .container
+                .row
+                    .top-bar-left.col-md-4.col-sm-4.col-xs-12
+                        ul.top-bar-list
+                            li.customer-checkout
+                                a(href='/checkout')
+                                    span Checkout
+                    .top-bar-info.col-md-4.col-sm-4.col-xs-12
+                        i.fa.fa-map-marker
+                        |           Kelburn, Wellington, New Zealand
+        .header-main
+            .container
+                .row
+                    .header-logo.col-md-3.col-sm-12.hidden-xs
+                        a.logo-site(href='/', title='Go L Y')
+                            img.logo(src='../images/logo.png', alt='Go L Y')
+                    .header-other.col-lg-9.col-md-9.col-sm-12
+                        .searchbox
+                            form#search.navbar-form.search(action='/search', method='get')
+                                input(type='hidden', name='type', value='product')
+                                input#bc-product-search.form-control(type='text', name='q', placeholder='Search', autocomplete='off')
+                                button.search-icon(type='submit')
+                            #result-ajax-search.hidden-xs
+                                ul.search-results
+                        .header-text-widget.hidden-xs
+                            .widget-description
+                                i.fa.fa-phone
+                                span.text-1 Technical Support
+                                span.text-2 Call: +64 22 345 6789
+                        .top-cart-holder
+                            .cart-target
+                                a.basket.cart-toggle(href='#', title='cart')
+                                    span.number
+                                        span.n-item 0
+                                        span.item  item(s)
+                                        |  - $0.00
+            .horizontal-menu-wrapper
+                .container
+                    .horizontal-menu.dropdown-fix
+                        .sidemenu-holder
+                            .navigation
+                                nav.navbar
+                                    .collapse.navbar-collapse
+                                        ul.main-nav
+                                            li.active
+                                                a(href='/')
+                                                    span Home
+                                            li
+                                                a(href='/about-us')
+                                                    span About us
+                                            li.dropdown.active
+                                                a.dropdown-link(href='/')
+                                                    span Categories
+                                                span.expand
+                                                    i.fa.fa-angle-down.hidden-xs.hidden-sm
+                                                    i.fa.fa-plus.visible-xs.visible-sm
+                                                ul.dropdown-menu
+                                                    li
+                                                        a(tabindex='-1', href='/categories/cato1')
+                                                            span cato1
+                                                    li
+                                                        a(tabindex='-1', href='/categories/cato2')
+                                                            span cato2

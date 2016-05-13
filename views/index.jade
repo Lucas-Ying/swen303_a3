@@ -1,5 +1,155 @@
 extends layout
 
+block header
+    include header
+
 block content
-  h1= title
-  p Welcome to #{title}
+    #body-content
+        .container
+            .row
+                // sidebar
+                include sidebar
+                //// main content
+                //#main-content.col-md-9
+                //    // Begin Slideshow
+                //    .home-slideshow-wrapper.swiper-container.swiper-container-horizontal.swiper-container-fade(data-animation='fade')
+                //        #home-slideshow.swiper-wrapper(style='transition-duration: 300ms;')
+                //            .swiper-slide(style='width: 869px; min-height: 200px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 300ms; background-image: url("//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_1.jpg?7556602907759554530");')
+                //                img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_1.jpg?7556602907759554530', alt='', style='visibility: hidden;')
+                //                .swiper-content.text-right.slide-1
+                //                    .container-box
+                //                        .heading
+                //                            | Lovely Bright
+                //                        .subheading
+                //                            span from:
+                //                            | 99.99$
+                //                        .caption-content.hidden-xs
+                //                            | Take home the world's most electic designs. Donec scelerisque placerat massa.
+                //                        .caption-link
+                //                            button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
+                //            .swiper-slide.swiper-slide-prev(style='width: 869px; min-height: 200px; opacity: 1; transform: translate3d(-869px, 0px, 0px); transition-duration: 300ms; background-image: url("//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_2.jpg?7556602907759554530");')
+                //                img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_2.jpg?7556602907759554530', alt='', style='visibility: hidden;')
+                //                .swiper-content.text-right.slide-2
+                //                    .container-box
+                //                        .heading
+                //                            | Lovely Bright
+                //                            br
+                //                            | Mugs
+                //                        .subheading
+                //                            span from:
+                //                            | 9.99$
+                //                        .caption-content.hidden-xs
+                //                            | Indulge in a little at-home geometry. Sed efficitur euismod urna, non iaculis.
+                //                        .caption-link
+                //                            button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
+                //            .swiper-slide.swiper-slide-active(style='width: 869px; min-height: 200px; opacity: 0.998849; transform: translate3d(-1739px, 0px, 0px); transition-duration: 300ms; background-image: url("//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_3.jpg?7556602907759554530");')
+                //                img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/image_slide_3.jpg?7556602907759554530', alt='', style='visibility: hidden;')
+                //                .swiper-content.text-right.slide-3
+                //                    .container-box
+                //                        .heading
+                //                            | Sewing Basket
+                //                            br
+                //                            | Oven Mitt
+                //                        .subheading
+                //                            span from:
+                //                            | 14.99$
+                //                        .caption-content.hidden-xs
+                //                            | With images from popular culture. In laoreet odio nulla, ac blandit tellus egestas vitae.
+                //                        .caption-link
+                //                            button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
+                //        // Add Pagination
+                //        .swiper-pagination.swiper-pagination-white.swiper-pagination-clickable
+                //            span.swiper-pagination-bullet
+                //            span.swiper-pagination-bullet
+                //            span.swiper-pagination-bullet.swiper-pagination-bullet-active
+                //        // Add Arrows
+                //        .swiper-button-next.swiper-button-white.swiper-button-disabled
+                //        .swiper-button-prev.swiper-button-white
+                //    script.
+                //        jQuery(document).ready(function ($) {
+                //            if (bcMsieVersion.MsieVersion() == 0) {
+                //                AT_Main.homeSlideshow();
+                //            }
+                //            else {
+                //                if (bcMsieVersion.MsieVersion() > 9 || !!navigator.userAgent.match(/Trident.*rv\\:11\./)) {
+                //                    AT_Main.homeIE();
+                //                }
+                //                else {
+                //                    jQuery('#home-slideshow').owlCarousel({
+                //                        nav: true
+                //                        ,
+                //                        dots: true
+                //                        ,
+                //                        items: 1
+                //                        ,
+                //                        navText: ['<i class="fa fa-angle-left" title="previous"></i>', '<i class="fa fa-angle-right" title="Next"></i>']
+                //                    })
+                //                }
+                //            }
+                //        });
+                //    // End Slideshow
+                //    .main-content
+                //        #home-main-content
+                //            // Begin Top Banner
+                //            #home-top-banner
+                //                .row.hidden-xs
+                //                    .col-sm-12
+                //                        .figure.top-banner-1
+                //                            img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/top_banner_1.jpg?7556602907759554530', alt='')
+                //                            .figcaption
+                //                                .banner-content.center
+                //                                    p Get 20% discount on orders over $300
+                //                            a.tb-button-1(href='#') VIEW DETAILS
+                //                .row
+                //                    .col-xs-12.col-sm-6
+                //                        .figure.top-banner.top-banner-2
+                //                            img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/top_banner_2.jpg?7556602907759554530', alt='')
+                //                            .figcaption
+                //                                .banner-content.left
+                //                                    p New Collection
+                //                            a.tb-button(href='#') Check!
+                //                    .col-xs-12.col-sm-6
+                //                        .figure.top-banner.top-banner-3
+                //                            img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/top_banner_3.jpg?7556602907759554530', alt='')
+                //                            .figcaption
+                //                                .banner-content.left
+                //                                    p Clearance Sale
+                //                            a.tb-button(href='#') Shop Now
+                //            // End Top Banner
+                //            // Begin Products
+                //            // End Products
+                //            // Begin Banner
+                //            #home-banner.hidden-xs.hidden-sm
+                //                .figure.home-banner
+                //                    img(src='//cdn.shopify.com/s/files/1/1291/1283/t/2/assets/home_banner.png?7556602907759554530', alt='')
+                //                    .figcaption
+                //                        .banner-content
+                //                            p Shop featured collection
+                //                            p
+                //                                | Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+                //                    a.hb-button(href='#') shop now
+                //            // End Banner
+                //            // Begin Latest Blog
+                //            .blog-container
+                //                .title-wrapper
+                //                    h3 Blog News
+                //                .post-list
+                //                    .post-item
+                //                        .post-image
+                //                        .post-content
+                //                            a.post-title(href='/blogs/news/168213319-first-post') First post
+                //                            .meta-data
+                //                                span.author By: Shopify
+                //                                span.date May 13, 2016
+                //                            p
+                //                                | This is your store’s blog. You can use it to talk about new product launches, experiences, tips or other news...
+                //                        .buttons-wrapper
+                //                            .post-comment
+                //                                i.fa.fa-comments
+                //                                span (0)
+                //                            a.link-to-post(href='/blogs/news/168213319-first-post', title='Read more')
+                //                                i.fa.fa-chevron-right
+                //            // End Latest Blog
+                //// End Main Content
+
+block footer
