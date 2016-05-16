@@ -1,16 +1,48 @@
 var express = require('express');
 var router = express.Router();
+//connect to db
+var pg = require('pg').native;
+var connectionString = "postgres://andy:mypassword@shop.cnidizu3p6xl.us-west-2.rds.amazonaws.com/shop";
+var client = new pg.Client(connectionString);
+client.connect();
 
-var itemListing = function(name, id, image, price){
+var maxResultsPerPage = 2;
+
+
+var itemListing = function(name, id, image, price, qty){
   this.name = name;
   this.id = id;
   this.imagesrc = image;
   this.price = price;
+  this.quantity = qty;
 }
 
 router.get('/', function(req, res, next) {
-  var results = [new itemListing("Toy", 1, "images/icon.bmp", 50), new itemListing("Shovel", 2, "images/icon.bmp", 30), new itemListing("Pencil", 3, "images/icon.bmp", 2)];
-  res.render('search', { results: results });
+  //var startIndex = req.request* 2;
+  //var search = req.query.searchTerms;
+  var search = "Chair".toLowerCase();
+  var query = client.query("SELECT * FROM Items");
+  var results = [];
+  // Stream results back one row at a time
+  query.on('row', function(row) {
+    console.log("Name: " + row.itemname);
+    if(row.itemname.toLowerCase().indexOf(search) > -1 || row.description.toLowerCase().indexOf(search) > -1){
+      var image = "images/" + row.images;
+      console.log();
+      if(row.images === "Default"){
+        image = "images/icon.bmp";
+      }
+      var listing = new itemListing(row.itemname, row.id, image, row.price, row.numitems)
+      results.push(listing);
+    }
+  });
+  //results.splice(startIndex, maxResultsPerPage);
+  // After all data is returned, close connection and return results
+  query.on('end', function() {
+    res.render('search', { results: results });
+  });
+
+
   });
 
   module.exports = router;
