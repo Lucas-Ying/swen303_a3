@@ -14,7 +14,6 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "pg": "",
-    "pg-native": "",
-    "bootstrap": "~3.3.6"
+    "pg-native": ""
   }
 }
