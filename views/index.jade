@@ -11,63 +11,8 @@ block content
                 include sidebar
                 // main content
                 #main-content.col-md-9
-                    // Begin Slideshow
-                    .home-slideshow-wrapper.swiper-container.swiper-container-horizontal.swiper-container-fade
-                        #home-slideshow.swiper-wrapper
-                            .swiper-slide
-                                img(src='/images/banner1.jpg', alt='')
-                                .swiper-content.text-right.slide-1
-                                    .container-box-outer
-                                        .container-box
-                                            .heading
-                                                | Stainless Mugs
-                                            .subheading
-                                                span from:
-                                                | $59.99
-                                            .caption-content.hidden-xs
-                                                | It comes with a stainless steel vacuum insulation that keeps beverages hotter or colder than travel mugs.
-                                            .caption-link
-                                                button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
-                            .swiper-slide
-                                img(src='/images/banner2.jpg', alt='')
-                                .swiper-content.text-left.slide-2
-                                    .container-box-outer
-                                        .container-box
-                                            .heading
-                                                | Stainless
-                                                br
-                                                | Mugs
-                                            .subheading
-                                                span from:
-                                                | $59.99
-                                            .caption-content.hidden-xs
-                                                | It comes with a stainless steel vacuum insulation that keeps beverages hotter or colder than travel mugs.
-                                            .caption-link
-                                                button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
-                            .swiper-slide
-                                img(src='/images/banner3.jpg', alt='')
-                                .swiper-content.text-right.slide-3
-                                    .container-box-outer
-                                        .container-box
-                                            .heading
-                                                | Stainless Mugs
-                                                br
-                                                span(style='color: #ff7850; font-size: 50px') Big Sale !
-                                            .subheading
-                                                span from:
-                                                | $29.99
-                                            .caption-content.hidden-xs
-                                                | It comes with a stainless steel vacuum insulation that keeps beverages hotter or colder than travel mugs.
-                                            .caption-link
-                                                button.btn.btn-custom.slider-button(type='button', onclick="window.location='#'") View Collection
-                    script.
-                        $('#home-slideshow').owlCarousel({
-                            nav: true,
-                            dots: true,
-                            items: 1,
-                            navText: ['<i class="fa fa-angle-left" title="previous"></i>', '<i class="fa fa-angle-right" title="Next"></i>']
-                        })
-                    // End Slideshow
+                    //homepage slider
+                    include homepage_slider
                     .main-content
                         #home-main-content
                             // Begin Top Banner
