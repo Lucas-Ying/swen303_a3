@@ -25,5 +25,4 @@ router.get('/test_database', function(request, response) {
   });
 });
 
-
 module.exports = router;
