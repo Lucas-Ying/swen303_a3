@@ -13,21 +13,49 @@ block content
 				#main-content.col-md-9
 
 
-	.container
-		p Listing Title
-		+input-simple("text", "listingTitle", "Title")
-		p Listing Description
-		+input-simple("text", "listingDesc", "Decsription")
-		p Price
-		+input-group("$")
-			+input("number", "listingPrice", "eg. $50")
-		p Category
-		+dropdown ("Please Select One",[
-			{text:"A",index:"1"},
-			{text:"B", href:"#", index:"2"},
-			{text:"C", href:"#", index:"3"}
-		])
-		p Number of Items
-		+input-simple("number", "noItems", "eg.12")
-		p
-		a.btn.btn-primary(type="submit") Submit
+					.container
+						h2 Add listing for sale
+						.form-group
+							label(for='product_name') Product Name
+							input#product_name.form-control(type='text')
+
+
+							label(for='description') Product Description
+							input#description.form-control(type='text')
+
+
+							label(for='price') Price
+							input#price.form-control(type='number')
+
+							label(for='numItems') Number ot Items
+							input#numItems.form-control(type='number')
+
+							label(for='imageLink') Image link
+							input#imageLink.form-control(type='text')
+
+						.dropdown
+							button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+								| Category
+								span.caret
+							ul.dropdown-menu
+								li
+									a(href='#') Auto
+								li
+									a(href='#') Furniture
+								li
+									a(href='#') Kitchen
+								li
+									a(href='#') Games
+								li
+									a(href='#') Tech
+								li
+									a(href='#') Books
+						.div
+							&nbsp
+							&nbsp
+
+
+						button.btn.btn-default(type='button') Submit
+
+
+

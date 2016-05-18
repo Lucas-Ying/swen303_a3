@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
     //var startIndex = req.request* 2;
     //var search = req.query.searchTerms;
     var test_id = 1;
-    var query = client.query("SELECT * FROM Items");
+    var query = client.query("SELECT * FROM Items WHERE ListingID = 1");
     var results = [];
     var id;
     var desc;
@@ -38,14 +38,13 @@ router.get('/', function(req, res, next) {
     // Stream results back one row at a time
     query.on('row', function(row) {
         if (row.listingid == test_id) {
-            //id = test_id;
+
+            id = row.listingid;
             desc = row.description;
-            console.log(desc);
-            console.log("loop");
             item_name = row.itemname;
             price = row.price;
-            numItems = row.NumItems;
-            sellerID = row.SellerID;
+            numItems = row.numitems;
+            sellerID = row.sellerid;
         }
     });
     query.on('end', function() {
