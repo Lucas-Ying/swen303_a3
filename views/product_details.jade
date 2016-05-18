@@ -8,16 +8,36 @@ extends layout
 //    var price = row.price;
 //    var numItems = row.NumItems;
 //    var SellerID = row.SellerID;
-
+block header
+    include header
 
 block content
-    .container
-        table
-            thead
-                h2 Product details
-            tbody
-                p Desc #{desc}
-                p id #{id}
-                p item #{item_name}
-                p Num items #{numItems}
-                p seller id #{sellerID}
+    #body-content
+        .container
+            .row
+                // sidebar
+                include sidebar
+                // main content
+                #main-content.col-md-9
+                    .container
+                        table
+                            thead
+                                h2 Product details
+                            tbody
+                                p Desc #{desc}
+                                p id #{id}
+                                p item #{item_name}
+                                p Num items #{numItems}
+                                p seller id #{sellerID}
+//
+//block content
+//    .container
+//        table
+//            thead
+//                h2 Product details
+//            tbody
+//                p Desc #{desc}
+//                p id #{id}
+//                p item #{item_name}
+//                p Num items #{numItems}
+//                p seller id #{sellerID}
