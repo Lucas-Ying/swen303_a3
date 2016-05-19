@@ -15,47 +15,46 @@ block content
 
 					.container
 						h2 Add listing for sale
-						.form-group
+						form(name='listing', method='post')
 							label(for='product_name') Product Name
-							input#product_name.form-control(type='text')
+							input#product_name.form-control(type='text', name="product_name")
 
 
 							label(for='description') Product Description
-							input#description.form-control(type='text')
+							input#description.form-control(type='text', name="description")
 
 
 							label(for='price') Price
-							input#price.form-control(type='number')
+							input#price.form-control(type='decimal', name="price")
 
 							label(for='numItems') Number ot Items
-							input#numItems.form-control(type='number')
+							input#numItems.form-control(type='number', name="numItems")
 
 							label(for='imageLink') Image link
-							input#imageLink.form-control(type='text')
+							input#imageLink.form-control(type='text', name="imageLink")
 
-						.dropdown
-							button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
-								| Category
-								span.caret
-							ul.dropdown-menu
-								li
-									a(href='#') Auto
-								li
-									a(href='#') Furniture
-								li
-									a(href='#') Kitchen
-								li
-									a(href='#') Games
-								li
-									a(href='#') Tech
-								li
-									a(href='#') Books
-						.div
-							&nbsp
-							&nbsp
-
-
-						button.btn.btn-default(type='button') Submit
-
-
-
+							label(for='category') Category
+							div
+								label.radio-inline.required
+									input(type='radio', name='category', value='auto')
+									| Auto
+								label.radio-inline
+									input(type='radio', name='category', value='books')
+									| Books
+								label.radio-inline
+									input(type='radio', name='category', value='furniture')
+									| Furniture
+								label.radio-inline
+									input(type='radio', name='category', value='games')
+									| Games
+								label.radio-inline
+									input(type='radio', name='category', value='kitchen')
+									| Kitchen
+								label.radio-inline
+									input(type='radio', name='category', value='tech')
+									| Tech
+							.div
+								&nbsp
+								&nbsp
+							button.btn.btn-default(type='submit', value="submit") Submit
+							
