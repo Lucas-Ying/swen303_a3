@@ -55,8 +55,6 @@ router.get('/:id', function(req, res, next) {
             images4 = row.images4;
             images5 = row.images5;
             images6 = row.images6;
-
-
             price = row.price;
             numItems = row.numitems;
             sellerID = row.sellerid;
@@ -67,6 +65,7 @@ router.get('/:id', function(req, res, next) {
             {
                 desc: desc,
                 id: id,
+                price: price,
                 item_name: item_name,
                 numItems: numItems,
                 sellerID: sellerID,
