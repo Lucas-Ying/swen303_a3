@@ -1,7 +1,5 @@
 extends layout
 
-
-
 //var id = test_id;
 //var desc = desc;
 //    var item_name = row.ItemName;
@@ -22,13 +20,16 @@ block content
                     .container
                         table
                             thead
-                                h2 Product details
+                                h2 #{item_name}
                             tbody
                                 p Desc #{desc}
-                                p id #{id}
-                                p item #{item_name}
+
+                                //p image link #{images}
+                                img(src='#{images}')
+
                                 p Num items #{numItems}
                                 p seller id #{sellerID}
+                                //p id #{id}
 //
 //block content
 //    .container
@@ -41,3 +42,15 @@ block content
 //                p item #{item_name}
 //                p Num items #{numItems}
 //                p seller id #{sellerID}
+
+
+
+
+
+
+//
+    img(src='#{images2}')
+                                img(src='#{images3}')
+                                img(src='#{images4}')
+                                img(src='#{images5}')
+                                img(src='#{images6}')
