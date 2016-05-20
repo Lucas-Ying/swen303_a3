@@ -1,0 +1,30 @@
+extends layout
+
+block header
+	include header
+
+block content
+	#body-content
+		.container
+			.row
+				// sidebar
+				include sidebar
+				// main content
+				#main-content.col-md-9
+
+
+					.container
+						h2 Sign Up Confirmation
+						div
+							&nbsp
+						p Thanks, 
+							strong #{firstName}
+							| , you have successfully signed up!
+						p Your UserID is 
+							strong #{id}.
+						div
+							&nbsp
+							&nbsp
+						p You can now sign in using the username 
+							strong #{username} 
+							| and the password you just provided.

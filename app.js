@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var search = require('./routes/search');
 var users = require('./routes/users');
 var product_details = require('./routes/product_details');
+var add_user = require('./routes/add_user');
 var app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use('/users', users);
 app.use('/search', search);
 app.use('/listing_page', listingPage);
 app.use('/product_details', product_details);
+app.use('/add_user', add_user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

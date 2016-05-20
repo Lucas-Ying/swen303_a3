@@ -1,0 +1,41 @@
+extends layout
+
+block header
+	include header
+
+block content
+	#body-content
+		.container
+			.row
+				// sidebar
+				include sidebar
+				// main content
+				#main-content.col-md-9
+
+
+					.container
+						h2 Sign Up 
+						form(name='join', method='post')
+							label(for='first_name') First Name
+							input#first_name.form-control(type='text', name="first_name")
+
+
+							label(for='last_name') Last Name
+							input#last_name.form-control(type='text', name="last_name")
+
+
+							label(for='email') Email
+							input#email.form-control(type='email', name="email")
+
+							label(for='username') Username
+							input#username.form-control(type='text', name="username")
+
+							label(for='passord') Password
+							input#password.form-control(type='password', name="password")
+							
+							div
+								&nbsp
+								&nbsp
+								
+							button.btn.btn-default(type='submit', value="submit") Submit
+							
