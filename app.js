@@ -8,9 +8,9 @@ var bodyParser = require('body-parser');
 var listingPage = require('./routes/listing_page');
 var routes = require('./routes/index');
 var search = require('./routes/search');
-var users = require('./routes/users');
 var product_details = require('./routes/product_details');
 var add_user = require('./routes/add_user');
+var browse = require('./routes/browse');
 var app = express();
 
 // view engine setup
@@ -26,11 +26,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/search', search);
 app.use('/listing_page', listingPage);
 app.use('/product_details', product_details);
 app.use('/add_user', add_user);
+app.use('/browse', browse);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
