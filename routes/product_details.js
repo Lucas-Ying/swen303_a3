@@ -26,7 +26,7 @@ client.connect();
 router.get('/:id', function(req, res, next) {
     //var startIndex = req.request* 2;
     //var search = req.query.searchTerms;
-    var test_id = req.params.id.substring(1);
+    var test_id = req.params.id;
     var query = client.query("SELECT * FROM Items");
     var results = [];
     var id;

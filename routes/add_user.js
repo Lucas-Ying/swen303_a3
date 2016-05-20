@@ -37,9 +37,6 @@ router.post('/', function (req, res) {
                });
         res.render('user_confirmation', { firstName: firstName, username:username, id: newIndex });
     });
-
-
-    //redirect to confirmation page - link to listing page?
 });
 
 

@@ -39,9 +39,6 @@ router.post('/', function (req, res) {
                });
         res.render('listing_confirmation', { id: newIndex });
     });
-
-
-    //redirect to confirmation page - link to listing page?
 });
 
 
