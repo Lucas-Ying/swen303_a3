@@ -25,17 +25,20 @@ block content
                                 h2 Search Results
                             tbody
                                 each val, index in results
-                                  form(action="/product_details")
-                                    input(type="hidden", name="id", value="testing")
                                     tr
                                         td
-                                                h3 #{val.name}
+                                          a(href="/product_details/:" + val.listingId)
+                                              h3 #{val.name}
                                         td
-                                                h4 Price
+                                          a(href="/product_details/:" + val.listingId)
+                                              h4 Price
                                     tr
                                         td
-                                              img(src = val.imagesrc, height = "100", width = "100")
+                                          a(href="/product_details/:" + val.listingId)
+                                              img(src = val.imagesrc, height = "200", width = "200")
                                         td
+                                          a(href="/product_details/:" + val.listingId)
+                                            .container
                                               $#{val.price}
 //
 //block content
