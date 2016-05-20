@@ -11,7 +11,7 @@ var maxResultsPerPage = 2;
 
 var itemListing = function(name, id, image, price, qty){
   this.name = name;
-  this.id = id;
+  this.listingId = id;
   this.imagesrc = image;
   this.price = price;
   this.quantity = qty;
@@ -19,20 +19,19 @@ var itemListing = function(name, id, image, price, qty){
 
 router.get('/', function(req, res, next) {
   //var startIndex = req.request* 2;
-  //var search = req.query.searchTerms;
-  var search = "Chair".toLowerCase();
+  var search = req.query.q.toLowerCase();
+
   var query = client.query("SELECT * FROM Items");
   var results = [];
   // Stream results back one row at a time
   query.on('row', function(row) {
-    console.log("Name: " + row.itemname);
     if(row.itemname.toLowerCase().indexOf(search) > -1 || row.description.toLowerCase().indexOf(search) > -1){
-      var image = "images/" + row.images;
-      console.log();
+      var image = row.images;
+
       if(row.images === "Default"){
         image = "images/icon.bmp";
       }
-      var listing = new itemListing(row.itemname, row.id, image, row.price, row.numitems)
+      var listing = new itemListing(row.itemname, row.listingid, image, row.price, row.numitems)
       results.push(listing);
     }
   });

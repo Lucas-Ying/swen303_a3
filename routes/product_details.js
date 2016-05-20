@@ -23,10 +23,11 @@ client.connect();
 //     NumItems INTEGER
 
 
-router.get('/:id', function(req, res, next) {
+router.get('/', function(req, res, next) {
     //var startIndex = req.request* 2;
     //var search = req.query.searchTerms;
-    var test_id = req.params.id;
+    var test_id = req.query.id;
+    console.log(req.query);
     var query = client.query("SELECT * FROM Items");
     var results = [];
     var id;
