@@ -1,0 +1,21 @@
+extends layout
+
+block header
+    include header
+
+block content
+    #body-content
+        .container
+            .row
+                include sidebar
+                // main content
+                #main-content.col-md-9
+                    .container
+                        table
+                            thead
+                                h1 #{item_name}
+                            tbody
+                                p Your Shopping Cart is empty!
+                                p If you already have an account, sign In to see your Cart.
+                                a(href="/") Continue shopping, learn about today's deals.
+

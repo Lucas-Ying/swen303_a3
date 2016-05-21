@@ -1,0 +1,32 @@
+extends layout
+
+block header
+    include header
+
+block content
+    #body-content
+        .container
+            .row
+                // sidebar
+                include sidebar
+                // main content
+                #main-content.col-md-9
+
+
+                    .container
+                        h2 Deals - all these items are under $50!
+                        tbody
+                            each val, index in results
+                                tr
+                                    td
+                                        a(href="/product_details/" + val.listingId)
+                                            h3 #{val.name}
+                                    td
+                                        h4 Price $#{val.price}
+                                tr
+                                    td
+                                        a(href="/product_details/" + val.listingId)
+                                            img(src = val.imagesrc, height = "200", width = "200")
+                                    td
+                                        a(href="/product_details/" + val.listingId)
+                                            .container

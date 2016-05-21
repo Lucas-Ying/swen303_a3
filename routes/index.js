@@ -8,7 +8,7 @@ client.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'GoShop - online shopping for automotive, furniture, games, and more...' });
 });
 
 router.get('/test_database', function(request, response) {

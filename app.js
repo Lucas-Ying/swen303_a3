@@ -11,6 +11,11 @@ var search = require('./routes/search');
 var product_details = require('./routes/product_details');
 var add_user = require('./routes/add_user');
 var browse = require('./routes/browse');
+var checkout = require('./routes/checkout');
+var shopping_cart = require('./routes/shopping_cart');
+var deals = require('./routes/deals');
+
+
 var app = express();
 
 // view engine setup
@@ -31,6 +36,10 @@ app.use('/listing_page', listingPage);
 app.use('/product_details', product_details);
 app.use('/add_user', add_user);
 app.use('/browse', browse);
+app.use('/checkout', checkout);
+app.use('/shopping_cart', shopping_cart);
+app.use('/deals', deals);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
