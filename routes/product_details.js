@@ -6,23 +6,6 @@ var connectionString = "postgres://andy:mypassword@shop.cnidizu3p6xl.us-west-2.r
 var client = new pg.Client(connectionString);
 client.connect();
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//     res.render('product_details', { title: 'Product Details' });
-// });
-
-
-
-// ListingID SERIAL,
-//     ItemName VARCHAR(50),
-//     Description VARCHAR(500),
-//     Images VARCHAR(50),
-//     Price DECIMAL,
-//     Categories VARCHAR(50),
-//     SellerID  SERIAL,
-//     NumItems INTEGER
-
-
 router.get('/:id', function(req, res, next) {
     //var startIndex = req.request* 2;
     //var search = req.query.searchTerms;
@@ -80,7 +63,5 @@ router.get('/:id', function(req, res, next) {
 
 
 });
-
-
 
     module.exports = router;

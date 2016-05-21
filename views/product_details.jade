@@ -1,11 +1,5 @@
 extends layout
 
-//var id = test_id;
-//var desc = desc;
-//    var item_name = row.ItemName;
-//    var price = row.price;
-//    var numItems = row.NumItems;
-//    var SellerID = row.SellerID;
 block header
     include header
 
@@ -13,76 +7,40 @@ block content
     #body-content
         .container
             .row
-                // sidebar
                 include sidebar
                 // main content
                 #main-content.col-md-9
                     .container
                         table
                             thead
-                                h2 #{item_name}
+                                h1 #{item_name}
                             tbody
                                 h3 Price $#{price}
                                 if (desc !== '' && desc !== 'Nodescription')
                                     .div(style='width:60%')
                                         Description #{desc}
 
-                                p Items in stock #{numItems}
-                                //p seller id #{sellerID}
+
+                                if numItems===0
+                                    p This item is sold out.
+                                if numItems === 1
+                                    h3 Only 1 remaining!
+                                if numItems>1
+                                    p Items in stock #{numItems}
+
                                 button.btn.btn-primary(type='button')
                                     | Buy
                                 p
 
-                                //p image link #{images}
-                                //p= typeof images
-                                //p IMAGES
-                                //p= !{images}
-                                //img(src='#{images}' width='40%' length='40%')
-
                                 if (images)
-                                    img(src='#{images}' width='60%'  style='margin:25px 5px')
+                                    img(src='#{images}'  width='60%' style='margin:10px 5px')
                                 if (images2)
-                                    img(src='#{images2}' width='60%' style='margin:25px 5px')
+                                    img(src='#{images2}' width='60%' style='margin:10px 5px')
                                 if (images3)
-                                    img(src='#{images3}' width='60%' style='margin:25px 5px')
+                                    img(src='#{images3}' width='60%' style='margin:10px 5px')
                                 if (images4)
-                                    img(src='#{images4}' width='60%'  style='margin:25px 5px')
+                                    img(src='#{images4}' width='60%' style='margin:10px 5px')
                                 if (images5)
-                                    img(src='#{images5}' width='60%'  style='margin:25px 5px')
+                                    img(src='#{images5}' width='60%' style='margin:10px 5px')
                                 if (images6)
-                                    img(src='#{images6}' width='60%'  style='margin:25px 5px')
-
-
-
-
-                                //p id #{id}
-
-
-
-
-
-
-//
-//block content
-//    .container
-//        table
-//            thead
-//                h2 Product details
-//            tbody
-//                p Desc #{desc}
-//                p id #{id}
-//                p item #{item_name}
-//                p Num items #{numItems}
-//                p seller id #{sellerID}
-
-
-
-
-
-
-//
-    img(src='#{images2}')
-                                img(src='#{images3}')
-                                img(src='#{images4}')
-                                img(src='#{images5}')
-                                img(src='#{images6}')
+                                    img(src='#{images6}' width='60%' style='margin:10px 5px')
