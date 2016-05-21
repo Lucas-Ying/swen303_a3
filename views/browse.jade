@@ -15,18 +15,15 @@ block content
 
 					.container
 						h2 #{category}
-						tbody
-							each val, index in results
-								tr
-									td
-										a(href="/product_details/" + val.listingId)
-											h3 #{val.name}
-									td
-										h4 Price $#{val.price}
-								tr
-									td
-										a(href="/product_details/" + val.listingId)
-											img(src = val.imagesrc, height = "200", width = "200")
-									td
-										a(href="/product_details/" + val.listingId)
-											.container
+						each val, index in results
+							.row
+								.col-sm-6.col-md-4
+									a(href="/product_details/" + val.listingId)
+										.thumbnail
+											img(src=val.imagesrc, height = "200", width="200")
+											.caption
+												h3 #{val.name}
+												p $#{val.price}
+													
+						
+					
