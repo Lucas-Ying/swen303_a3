@@ -27,7 +27,8 @@ block content
 								.col-sm-6.col-md-4
 									a(href="/product_details/" + val.listingId)
 										.thumbnail
-											img(src=val.imagesrc, height = "200", width="200")
+											if(val.imagesrc)
+												img(src=val.imagesrc, height = "200", width="200")
 											.caption
 												h3 #{val.name}
 												p $#{val.price}
