@@ -14,7 +14,13 @@ block content
 
 
 					.container
-						h2 #{category}
+						h2 #{category} 
+						p Sort By: &nbsp
+							a(href="/browse/price_asc/"+category) Price(Ascending)
+							| &nbsp &nbsp
+							a(href="/browse/price_desc/"+category) Price(Descending)
+							| &nbsp &nbsp
+							a(href="/browse/name/"+category) Name
 						each val, index in results
 							.row
 								.col-sm-6.col-md-4
