@@ -21,23 +21,28 @@ block content
                 #main-content.col-md-9
                     .container
                         h2 Search Results
-                        p Sort By: &nbsp
-                          a(href="/search?sort=price_asc&searchTerm="+search) Price(Ascending)
-                          | &nbsp &nbsp
-                          a(href="/search?sort=price_desc&searchTerm="+search) Price(Descending)
-                          | &nbsp &nbsp
-                          a(href="/search?sort=name&searchTerm="+search) Name
-                        br
-                        each val, index in results
-                          .row
-                            .col-sm-6.col-md-4
-                              a(href="/product_details/" + val.listingId)
-                                .thumbnail
-                                  if(val.imagesrc)
-                                    img(src=val.imagesrc, height = "200", width="200")
-                                  .caption
-                                    h3 #{val.name}
-                                    p $#{val.price}
+                        if (results.length>0)
+                            p Sort By: &nbsp
+                              a(href="/search?sort=price_asc&searchTerm="+search) Price(Ascending)
+                              | &nbsp &nbsp
+                              a(href="/search?sort=price_desc&searchTerm="+search) Price(Descending)
+                              | &nbsp &nbsp
+                              a(href="/search?sort=name&searchTerm="+search) Name
+                            br
+                            each val, index in results
+                              .row
+                                .col-sm-6.col-md-4
+                                  a(href="/product_details/" + val.listingId)
+                                    .thumbnail
+                                      if(val.imagesrc)
+                                        img(src=val.imagesrc, height = "200", width="200")
+                                      .caption
+                                        h3 #{val.name}
+                                        p $#{val.price}
+                        else
+                            br
+                            h3 There are no results.
+                            p Please try a different search or browse by category
 //
 //block content
 //    .container
