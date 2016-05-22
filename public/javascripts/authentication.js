@@ -13,13 +13,13 @@ $().ready(function(){
         //get the name/email of the login button
         var loginName = document.getElementById('log-in').text;
         if(loginName =='LOG IN'){
-            location.href = '/login';
+            location.href = 'login';
         }
         else if(loginName =='LOG OUT'){
             sessionStorage.setItem('useremail', "");
             sessionStorage.setItem('username', "");
             changeLoginName();
-            location.href = '/login';
+            location.href = 'login';
         }
     });
 
@@ -27,10 +27,10 @@ $().ready(function(){
     $('#registration').on('click',function(){
         var loginName = document.getElementById('registration').text;
         if(loginName!= 'SIGN UP'){
-            location.href = '/login';
+            location.href = 'login';
         }
         else{
-            location.href = '/register';
+            location.href = 'register';
         }
     });
 
