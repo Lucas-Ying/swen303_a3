@@ -1,13 +1,6 @@
 $().ready(function(){
     changeLoginName();
 
-    ////login button
-    //$('#Name').on('click',function(){
-    //
-    //    location.href = 'index';
-    //
-    //});
-
     //login button
     $('#log-in').on('click',function(){
         //get the name/email of the login button
@@ -97,11 +90,12 @@ $().ready(function(){
                     data:{'first_name':first_name,'last_name':last_name,'email':email,"name":name,"pass":pass},
 
                     success:function(){
-                        alert("SignUp Successful!");
+                        //alert("SignUp Successful!");
                         //addCart();
+                        location.href = ""
                     },
                     error:function(){
-                        console.log("Error: fail to add user: "+name);
+                        //console.log("Error: fail to add user: "+name);
                     }
                 });
             }
@@ -153,13 +147,13 @@ $().ready(function(){
     $('#loginForm').submit(function(e){
         e.preventDefault();
         var email = $('input[id="email"]').val();
-        var passW = $('input[id="password"]').val();
+        //var passW = $('input[id="password"]').val();
 
         //$('#email,#password').on('click',function(){
         //    document.getElementById('err').style.visibility = 'hidden';
         //});
 
-        if(email && passW){
+        if(email){
             //console.log("email: "+email+ "password: "+passW);
             $.ajax({
                 method:'GET',
@@ -169,10 +163,10 @@ $().ready(function(){
                     //go through database check if email exist
                     for(i = 0; i<data.length; i++){
                         if(data[i].email == email){
-                            if(data[i].pass == passW){
-                                location.href = 'index';
+                            //if(data[i].pass == passW){
+                                location.href = '/?account_id='+data[i].userid;
                                 sessionStorage.setItem('useremail', data[i].email);
-                                sessionStorage.setItem('username',data[i].name);
+                                sessionStorage.setItem('username',data[i].userhandle);
                                 //console.log(sessionStorage.getItem('username'));
                                 changeLoginName();
                                 alert("Login Successful!");
@@ -181,13 +175,13 @@ $().ready(function(){
                                 $('#loginForm').trigger('reset');
                                 return;
                                 //do something here
-                            }
-                            else{
-                                document.getElementById('err').innerHTML="Incorrect password";
-                                document.getElementById('err').style.visibility = 'visible';
-                                return;
-                                //console.log("Error: incorrect password");
-                            }
+                            //}
+                            //else{
+                            //    document.getElementById('err').innerHTML="Incorrect password";
+                            //    document.getElementById('err').style.visibility = 'visible';
+                            //    return;
+                            //    //console.log("Error: incorrect password");
+                            //}
                         }
                     }
                     document.getElementById('err').innerHTML="Email doesn't exists";

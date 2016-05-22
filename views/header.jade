@@ -12,9 +12,9 @@ header.header-content(data-stick='true', style='')
                                 a(href='/checkout')
                                     span Checkout
                             li
-                                a#registration SIGN UP
+                                a#registration
                             li
-                                a#log-in LOG IN
+                                a#log-in
                     .top-bar-info.col-md-4.col-sm-4.col-xs-12
                         i.fa.fa-map-marker
                         |           Kelburn, Wellington, New Zealand
@@ -83,3 +83,15 @@ header.header-content(data-stick='true', style='')
                                                     li
                                                         a(tabindex='-1', href='/browse?category=Tech')
                                                             span Tech
+
+                                            li#account
+                                                a(href='/about-us')
+                                                    span About us
+                                            script.
+                                                function showaccount(){
+                                                    if (sessionStorage.getItem('username')) {
+                                                        document.getElementById('account').style.visibility = 'visible';
+                                                    } else {
+                                                        document.getElementById('account').style.visibility = 'hidden';
+                                                    }
+                                                }
