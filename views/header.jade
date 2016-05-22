@@ -72,22 +72,22 @@ header.header-content(data-stick='true', style='')
                                                     i.fa.fa-plus.visible-xs.visible-sm
                                                 ul.dropdown-menu
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Auto')
+                                                        a#auto(tabindex='-1', href='/browse?category=Auto')
                                                             span Auto
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Books')
+                                                        a#books(tabindex='-1', href='/browse?category=Books')
                                                             span Books
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Furniture')
+                                                        a#furniture(tabindex='-1', href='/browse?category=Furniture')
                                                             span Furniture
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Games')
+                                                        a#games(tabindex='-1', href='/browse?category=Games')
                                                             span Games
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Kitchen')
+                                                        a#kitchen(tabindex='-1', href='/browse?category=Kitchen')
                                                             span Kitchen
                                                     li
-                                                        a(tabindex='-1', href='/browse?category=Tech')
+                                                        a#tech(tabindex='-1', href='/browse?category=Tech')
                                                             span Tech
                                             li#account.dropdown
                                                 a.dropdown-link(href='#')
@@ -97,16 +97,16 @@ header.header-content(data-stick='true', style='')
                                                     i.fa.fa-plus.visible-xs.visible-sm
                                                 ul.dropdown-menu
                                                     li
-                                                        a(tabindex='-1', href='/listing_page')
+                                                        a#list(tabindex='-1', href='/listing_page')
                                                                 span List an item
                                                     li
-                                                        a(tabindex='-1', href='/account_items?account_id=99&type=current')
+                                                        a#current(tabindex='-1', href='/account_items?account_id=99&type=current')
                                                             span Current Listings
                                                     li
-                                                        a(tabindex='-1', href='/account_items?account_id=99&type=sold')
+                                                        a#sold(tabindex='-1', href='/account_items?account_id=99&type=sold')
                                                             span Sold Items
                                                     li
-                                                        a(tabindex='-1', href='/account_items?account_id=99&type=bought')
+                                                        a#bought(tabindex='-1', href='/account_items?account_id=99&type=bought')
                                                             span Bought Items
                                             script.
                                                 $().ready(function(){
@@ -116,5 +116,26 @@ header.header-content(data-stick='true', style='')
                                                         document.getElementById('accountcontent').innerHTML='Account #' + sessionStorage.getItem('userid');
                                                     } else {
                                                         document.getElementById('account').style.visibility = 'hidden';
+                                                    }
+                                                });
+                                                $().ready(function() {
+                                                    if(sessionStorage.getItem('username'))
+                                                    {
+                                                        document.getElementById('list').href = '/listing_page?account_id='+sessionStorage.getItem('userid');
+                                                    }
+                                                });
+                                                $().ready(function () {
+                                                    if (sessionStorage.getItem('username')) {
+                                                        document.getElementById('current').href = '/account_items?type=current&account_id=' + sessionStorage.getItem('userid');
+                                                    }
+                                                });
+                                                $().ready(function () {
+                                                    if (sessionStorage.getItem('username')) {
+                                                        document.getElementById('sold').href = '/account_items?type=sold&account_id=' + sessionStorage.getItem('userid');
+                                                    }
+                                                });
+                                                $().ready(function () {
+                                                    if (sessionStorage.getItem('username')) {
+                                                        document.getElementById('bought').href = '/account_items?type=bought&account_id=' + sessionStorage.getItem('userid');
                                                     }
                                                 });

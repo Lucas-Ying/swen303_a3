@@ -45,7 +45,7 @@ router.post('/listing_page', function (req, res) {
   var price = (Number)(req.body.price);
   var category = req.body.category;
   var numItems = (Number)(req.body.numItems);
-  var sellerId = 99;
+  var sellerId = req.param('account_id');
 
   var query = client.query("SELECT MAX(ListingId) FROM Items");
   var index;
