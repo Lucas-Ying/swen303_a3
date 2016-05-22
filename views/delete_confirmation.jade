@@ -1,0 +1,25 @@
+extends layout
+
+block header
+	include header
+
+block content
+	#body-content
+		.container
+			.row
+				// sidebar
+				include sidebar
+				// main content
+				#main-content.col-md-9
+
+
+					.container
+						h2 Confirmation
+						div
+							&nbsp
+							&nbsp
+						p Your Listing has been successfully deleted
+						div
+							&nbsp
+							&nbsp
+						a(href='/account_items?type=current&account_id=99') View Your other listings

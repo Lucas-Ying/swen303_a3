@@ -45,7 +45,7 @@ router.post('/listing_page', function (req, res) {
   var price = (Number)(req.body.price);
   var category = req.body.category;
   var numItems = (Number)(req.body.numItems);
-  var sellerId = 1;
+  var sellerId = 99;
 
   var query = client.query("SELECT MAX(ListingId) FROM Items");
   var index;
@@ -89,7 +89,7 @@ router.get('/search', function (req, res, next) {
   var results = [];
   // Stream results back one row at a time
   query.on('row', function (row) {
-    if (row.itemname.toLowerCase().indexOf(search) > -1 || row.description.toLowerCase().indexOf(search) > -1) {
+    if ((row.itemname.toLowerCase().indexOf(search) > -1 || row.description.toLowerCase().indexOf(search) > -1)&& row.numitems>0) {
       var image = row.images;
 
       if (row.images === "Default") {
@@ -293,12 +293,28 @@ router.post('/modify_listing', function (req, res) {
 });
 //===================================================================//
 
+//======================== Delete Listing =====================//
+router.get('/delete_listing', function (req, res, next) {
+    var listingId = req.param('id');
+    
+    client.query('UPDATE Items'
+        + ' SET NumItems=0'
+        + ' WHERE ListingId=$1'
+        , [listingId]
+        , function (err, result) {
+            
+        });
+    res.render('delete_confirmation', { title: 'Listing Deleted' });
+});
+
+//===================================================================//
+
 //======================== Purchase Confirmation =====================//
 router.get('/purchase_confirmation', function(req, res, next) {
   //var startIndex = req.request* 2;
   //var search = req.query.searchTerms;
   var test_id = req.param('id');
-  var userId = req.param('account_id');
+  var userId = 99;
   var query = client.query("SELECT * FROM Items");
   var results = [];
   var id;
@@ -379,7 +395,7 @@ router.get('/account_items', function (req, res, next) {
   var type = req.param('type');
   var query;
   if (type === "current") {
-    query = client.query("SELECT * FROM Items WHERE SellerID=$1", [accountId], function (err, result) { });
+    query = client.query("SELECT * FROM Items WHERE SellerID=$1 AND numItems>0", [accountId], function (err, result) { });
   } else if (type === "sold") {
     query = client.query("SELECT * FROM Items"
         + " INNER JOIN Transactions"

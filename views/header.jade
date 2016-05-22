@@ -56,10 +56,10 @@ header.header-content(data-stick='true', style='')
                                                 a(href='/')
                                                     span Home
                                             li
-                                                a(href='/about-us')
+                                                a(href='#')
                                                     span About us
                                             li.dropdown
-                                                a.dropdown-link(href='/')
+                                                a.dropdown-link(href='#')
                                                     span Categories
                                                 span.expand
                                                     i.fa.fa-angle-down.hidden-xs.hidden-sm
@@ -83,14 +83,31 @@ header.header-content(data-stick='true', style='')
                                                     li
                                                         a(tabindex='-1', href='/browse?category=Tech')
                                                             span Tech
-                                            li#account
-                                                a(href='/account_items')
+                                            li#account.dropdown
+                                                a.dropdown-link(href='#')
                                                     span#accountcontent
+                                                span.expand
+                                                    i.fa.fa-angle-down.hidden-xs.hidden-sm
+                                                    i.fa.fa-plus.visible-xs.visible-sm
+                                                ul.dropdown-menu
+                                                    li
+                                                        a(tabindex='-1', href='/listing_page')
+                                                                span List an item
+                                                    li
+                                                        a(tabindex='-1', href='/account_items?account_id=99&type=current')
+                                                            span Current Listings
+                                                    li
+                                                        a(tabindex='-1', href='/account_items?account_id=99&type=sold')
+                                                            span Sold Items
+                                                    li
+                                                        a(tabindex='-1', href='/account_items?account_id=99&type=bought')
+                                                            span Bought Items
                                             script.
                                                 $().ready(function(){
+                                                    var account_id = sessionStorage.getItem('userid');
                                                     if (sessionStorage.getItem('username')) {
                                                         document.getElementById('account').style.visibility = 'visible';
-                                                        document.getElementById('accountcontent').innerHTML='Account ' + sessionStorage.getItem('userid');
+                                                        document.getElementById('accountcontent').innerHTML='Account #' + sessionStorage.getItem('userid');
                                                     } else {
                                                         document.getElementById('account').style.visibility = 'hidden';
                                                     }
