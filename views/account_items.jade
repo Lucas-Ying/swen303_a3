@@ -1,0 +1,40 @@
+extends layout
+
+block header
+	include header
+
+block content
+	#body-content
+		.container
+			.row
+				// sidebar
+				include sidebar
+				// main content
+				#main-content.col-md-9
+
+
+					.container
+						if(type=='current')
+							h2 Current Listings
+						if(type=='sold')
+							h2 Sold Items	
+						if(type=='bought')
+							h2 Bought Items
+						
+						each val, index in results
+							.row
+								.col-sm-6.col-md-4
+									a(href="/product_details/" + val.listingId)
+										.thumbnail
+											if(val.imagesrc)
+												img(src=val.imagesrc, height = "200", width="200")
+											.caption
+												h3 #{val.name}
+												p $#{val.price}
+											if(type == 'current')
+												a.btn.btn-default(href='/modify_listing?id=' +val.listingId, role='button') Modify Listing
+												&nbsp  &nbsp
+												a.btn.btn-danger(href='/modify_listing?id=' +val.listingId, role='button') Delete Listing
+													
+						
+					

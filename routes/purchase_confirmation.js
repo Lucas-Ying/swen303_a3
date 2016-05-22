@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     //var startIndex = req.request* 2;
     //var search = req.query.searchTerms;
     var test_id = req.param('id');
+    var userId = req.param('account_id');
     var query = client.query("SELECT * FROM Items");
     var results = [];
     var id;
@@ -43,14 +44,24 @@ router.get('/', function(req, res, next) {
             sellerID = row.sellerid;
         }
     });
-    query.on('end', function() {
-        if (numItems>1){
-            client.query("UPDATE items SET NumItems=$1 where listingID=$2",[numItems-1,id])
-        }
+    query.on('end', function () {
 
-        else{
-            client.query("delete from items where listingID=$1",[id])
-        }
+        var findIndex = client.query("SELECT MAX(ListingId) FROM Items");
+        var index;
+        var newIndex;
+
+        findIndex.on('row', function (row) {
+            index = JSON.parse(row.max);
+            newIndex = (Number)(index + 1);
+        });
+
+        findIndex.on('end', function () {
+            client.query("UPDATE items SET NumItems=$1 where listingID=$2", [numItems - 1, id])
+            client.query("INSERT INTO Transactions"
+                + " (ListingID, SellerID, BuyerID, Price, Transactions) VALUES"
+                + "($1, $2, $3, $4, $5)"
+                , [id, sellerID, userId, price, newIndex]);
+        });
 
 
         res.render('purchase_confirmation',
