@@ -8,7 +8,7 @@ client.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('add_user', { title: 'Join' });
+  res.render('register', { title: 'Join' });
 });
 
 router.post('/', function (req, res) {

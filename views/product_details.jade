@@ -11,36 +11,40 @@ block content
                 // main content
                 #main-content.col-md-9
                     .container
-                        table
-                            thead
-                                h1 #{item_name}
-                            tbody
-                                h3 Price $#{price}
-                                if (desc !== '' && desc !== 'Nodescription')
-                                    .div(style='width:60%')
-                                        Description #{desc}
+                        if (item_name)
+                            table
+                                thead
+                                    h1 #{item_name}
+                                tbody
+                                    h3 Price $#{price}
+                                    if (desc !== '' && desc !== 'Nodescription')
+                                        .div(style='width:60%')
+                                            Description #{desc}
 
+                                    if numItems===0
+                                        p This item is sold out.
+                                    if numItems === 1
+                                        h3 Only 1 remaining!
+                                    if numItems>1
+                                        p Items in stock #{numItems}
 
-                                if numItems===0
-                                    p This item is sold out.
-                                if numItems === 1
-                                    h3 Only 1 remaining!
-                                if numItems>1
-                                    p Items in stock #{numItems}
+                                    a.btn.btn-success(href='/purchase_confirmation?id='+id, role='button') Buy Now
 
-                                button.btn.btn-default(type='button')
-                                    | Buy
-                                p
+                                    p
 
-                                if (images)
-                                    img(src='#{images}'  width='60%' style='margin:10px 5px')
-                                if (images2)
-                                    img(src='#{images2}' width='60%' style='margin:10px 5px')
-                                if (images3)
-                                    img(src='#{images3}' width='60%' style='margin:10px 5px')
-                                if (images4)
-                                    img(src='#{images4}' width='60%' style='margin:10px 5px')
-                                if (images5)
-                                    img(src='#{images5}' width='60%' style='margin:10px 5px')
-                                if (images6)
-                                    img(src='#{images6}' width='60%' style='margin:10px 5px')
+                                    if (images)
+                                        img(src='#{images}'  width='60%' style='margin:10px 5px')
+                                    if (images2)
+                                        img(src='#{images2}' width='60%' style='margin:10px 5px')
+                                    if (images3)
+                                        img(src='#{images3}' width='60%' style='margin:10px 5px')
+                                    if (images4)
+                                        img(src='#{images4}' width='60%' style='margin:10px 5px')
+                                    if (images5)
+                                        img(src='#{images5}' width='60%' style='margin:10px 5px')
+                                    if (images6)
+                                        img(src='#{images6}' width='60%' style='margin:10px 5px')
+                        else
+                            h2 This item is no longer available.
+
+                            a.btn.btn-success(href='/', role='button') Return to homepage

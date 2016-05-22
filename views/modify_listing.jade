@@ -1,0 +1,88 @@
+extends layout
+
+block header
+	include header
+
+block content
+	#body-content
+		.container
+			.row
+				// sidebar
+				include sidebar
+				// main content
+				#main-content.col-md-9
+
+
+					.container
+						h2 Modify Your Current Listing
+						p Please update any details you wish to modify
+						form(name='modify', method='post')
+							label(for='product_name') Product Name
+							input#product_name.form-control(type='text', name="product_name", value='#{name}')
+
+							if (desc !== '' && desc !== 'Nodescription')
+							label(for='description') Product Description
+							if (desc !== '' && desc !== 'Nodescription')
+								input#description.form-control(type='text', name="description", value='#{desc}')
+							else
+								input#description.form-control(type='text', name="description")
+								
+
+							label(for='price') Price
+							input#price.form-control(type='decimal', name="price", value='#{price}')
+
+							label(for='numItems') Number of Items
+							input#numItems.form-control(type='number', name="numItems",value='#{num}')
+
+							label(for='imageLink') Image link
+							input#imageLink.form-control(type='text', name="imageLink", value='#{image}')
+
+							label(for='category') Category
+							div
+								label.radio-inline.required
+									if(category == 'Auto')
+										input(type='radio', name='category', value='Auto', checked='checked')
+										| Auto
+									else
+										input(type='radio', name='category', value='Auto')
+										| Auto
+								label.radio-inline
+									if(category == 'Books')
+										input(type='radio', name='category', value='Books', checked='checked')
+										| Books
+									else
+										input(type='radio', name='category', value='Books')
+										| Books
+								label.radio-inline
+									if(category == 'Furniture')
+										input(type='radio', name='category', value='Furniture', checked='checked')
+										| Furniture
+									else
+										input(type='radio', name='category', value='Furniture')
+										| Furniture
+								label.radio-inline
+									if(category == 'Games')
+										input(type='radio', name='category', value='Games', checked='checked')
+										| Games
+									else
+										input(type='radio', name='category', value='Games')
+										| Games
+								label.radio-inline
+									if(category == 'Kitchen')
+										input(type='radio', name='category', value='Kitchen', checked='checked')
+										| Kitchen
+									else
+										input(type='radio', name='category', value='Kitchen')
+										| Kitchen
+								label.radio-inline
+									if(category == 'Tech')
+										input(type='radio', name='category', value='Tech', checked='checked')
+										| Tech
+									else
+										input(type='radio', name='category', value='Tech')
+										| Tech
+							.div
+								&nbsp
+								&nbsp
+							button.btn.btn-default(type='submit', value="submit") Submit
+							
