@@ -14,6 +14,8 @@ var browse = require('./routes/browse');
 var checkout = require('./routes/checkout');
 var shopping_cart = require('./routes/shopping_cart');
 var deals = require('./routes/deals');
+var purchase_confirmation = require('./routes/purchase_confirmation');
+
 
 
 var app = express();
@@ -39,6 +41,8 @@ app.use('/browse', browse);
 app.use('/checkout', checkout);
 app.use('/shopping_cart', shopping_cart);
 app.use('/deals', deals);
+app.use('/purchase_confirmation', purchase_confirmation );
+
 
 
 // catch 404 and forward to error handler

@@ -19,7 +19,7 @@ var itemListing = function(name, id, image, price, qty){
 router.get('/', function (req, res, next) {
 
 
-    var query = client.query("SELECT * FROM Items WHERE Price<50", function (err, result) {
+    var query = client.query("SELECT * FROM Items WHERE Price<30 ORDER BY price", function (err, result) {
 
     });
     console.log(query);
