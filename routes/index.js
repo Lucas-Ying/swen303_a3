@@ -83,13 +83,13 @@ var itemListing = function (name, id, image, price, qty) {
 
 router.get('/search', function (req, res, next) {
   //var startIndex = req.request* 2;
-  var search;
-  console.log("Query: " + req.query.q);
+  var search =req.query.q.toLowerCase();
+  /*console.log("Query: " + req.query.q);
   console.log("term: " + req.params.searchTerm);
-  /*if(req.query.q != "undefined"){
+  if(typeof(req.query.q) != 'undefined'){
     search = req.query.q.toLowerCase();
   }
-  else if(searchTerm != "undefined" ){
+  else if(typeof(searchTerm) != 'undefined' ){
     search = req.params.searchTerm.toLowerCase();
   }
   else{
@@ -322,13 +322,13 @@ router.post('/modify_listing', function (req, res) {
 //======================== Delete Listing =====================//
 router.get('/delete_listing', function (req, res, next) {
     var listingId = req.param('id');
-    
+
     client.query('UPDATE Items'
         + ' SET NumItems=0'
         + ' WHERE ListingId=$1'
         , [listingId]
         , function (err, result) {
-            
+
         });
     res.render('delete_confirmation', { title: 'Listing Deleted' });
 });
