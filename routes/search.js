@@ -20,8 +20,19 @@ var itemListing = function(name, id, image, price, qty){
 router.get('/', function(req, res, next) {
   //var startIndex = req.request* 2;
   var search = req.query.q.toLowerCase();
-
-  var query = client.query("SELECT * FROM Items");
+  var sort = req.param('sort');
+  var query;
+  if (sort === "price_asc") {
+      query = client.query("SELECT * FROM Items ORDER BY Price Asc", function (err, result) {});
+  } else if (sort === "price_desc") {
+      query = client.query("SELECT * FROM Items ORDER BY Price desc", function (err, result) {});
+      }
+  else if (sort === "name") {
+      query = client.query("SELECT * FROM Items ORDER BY ItemName Asc", function (err, result) {});
+  }
+  else{
+      query = client.query("SELECT * FROM Items", function (err, result) {});
+  }
   var results = [];
   // Stream results back one row at a time
   query.on('row', function(row) {

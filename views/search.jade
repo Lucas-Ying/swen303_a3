@@ -23,23 +23,23 @@ block content
                         table
                             thead
                                 h2 Search Results
-                            tbody
+                                p Sort By: &nbsp
+                    							a(href="/search?sort=price_asc") Price(Ascending)
+                    							| &nbsp &nbsp
+                    							a(href="/search?sort=price_desc") Price(Descending)
+                    							| &nbsp &nbsp
+                    							a(href="/search?sort=name") Name
+                    						br
                                 each val, index in results
-                                    tr
-                                        td
-                                          a(href="/product_details/" + val.listingId)
-                                              h3 #{val.name}
-                                        td
-                                          a(href="/product_details/" + val.listingId)
-                                              h4 Price
-                                    tr
-                                        td
-                                          a(href="/product_details/" + val.listingId)
-                                              img(src = val.imagesrc, height = "200", width = "200")
-                                        td
-                                          a(href="/product_details/" + val.listingId)
-                                            .container
-                                              $#{val.price}
+                                  .row
+                                    .col-sm-6.col-md-4
+                                      a(href="/product_details/" + val.listingId)
+                                        .thumbnail
+                                          if(val.imagesrc)
+                                            img(src=val.imagesrc, height = "200", width="200")
+                                          .caption
+                                            h3 #{val.name}
+                                            p $#{val.price}
 //
 //block content
 //    .container
