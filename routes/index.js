@@ -83,9 +83,34 @@ var itemListing = function (name, id, image, price, qty) {
 
 router.get('/search', function (req, res, next) {
   //var startIndex = req.request* 2;
-  var search = req.query.q.toLowerCase();
+  var search;
+  console.log("Query: " + req.query.q);
+  console.log("term: " + req.params.searchTerm);
+  /*if(req.query.q != "undefined"){
+    search = req.query.q.toLowerCase();
+  }
+  else if(searchTerm != "undefined" ){
+    search = req.params.searchTerm.toLowerCase();
+  }
+  else{
+    //TODO error message
+    search = "";
+  }*/
 
-  var query = client.query("SELECT * FROM Items");
+  //var sort = req.param('sort');
+  var sort = " ";
+  var query;
+  if (sort === "price_asc") {
+      query = client.query("SELECT * FROM Items ORDER BY Price Asc", function (err, result) {});
+  } else if (sort === "price_desc") {
+      query = client.query("SELECT * FROM Items ORDER BY Price desc", function (err, result) {});
+      }
+  else if (sort === "name") {
+      query = client.query("SELECT * FROM Items ORDER BY ItemName Asc", function (err, result) {});
+  }
+  else{
+      query = client.query("SELECT * FROM Items", function (err, result) {});
+  }
   var results = [];
   // Stream results back one row at a time
   query.on('row', function (row) {
@@ -99,10 +124,11 @@ router.get('/search', function (req, res, next) {
       results.push(listing);
     }
   });
+  console.log("Search: " + search);
   //results.splice(startIndex, maxResultsPerPage);
   // After all data is returned, close connection and return results
   query.on('end', function () {
-    res.render('search', {results: results});
+    res.render('search', {results: results, search: search});
   });
 
 
