@@ -34,8 +34,10 @@ router.get('/', function (req, res, next) {
     var results = [];
     // Stream results back one row at a time
     query.on('row', function(row) {
-        var listing = new itemListing(row.itemname, row.listingid, row.images, row.price, row.numitems, row.quantity)
-        results.push(listing);
+        if (row.numitems>0) {
+            var listing = new itemListing(row.itemname, row.listingid, row.images, row.price, row.numitems, row.quantity)
+            results.push(listing);
+        }
     });
 
     // After all data is returned, close connection and return results
