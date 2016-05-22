@@ -22,12 +22,12 @@ block content
                     .container
                         h2 Search Results
                         if (results.length>0)
-                            //p Sort By: &nbsp
-                              //a(href="/search?sort=price_asc&searchTerm="+search) Price(Ascending)
-                              //| &nbsp &nbsp
-                              //a(href="/search?sort=price_desc&searchTerm="+search) Price(Descending)
-                              //| &nbsp &nbsp
-                              //a(href="/search?sort=name&searchTerm="+search) Name
+                            p Sort By: &nbsp
+                              a(href="/search?sort=price_asc&searchTerm="+search) Price(Ascending)
+                              | &nbsp &nbsp
+                              a(href="/search?sort=price_desc&searchTerm="+search) Price(Descending)
+                              | &nbsp &nbsp
+                              a(href="/search?sort=name&searchTerm="+search) Name
                             br
                             each val, index in results
                               .row

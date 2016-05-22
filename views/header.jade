@@ -27,11 +27,17 @@ header.header-content(data-stick='true', style='')
                     .header-other.col-lg-9.col-md-9.col-sm-12
                         .searchbox
                             form#search.navbar-form.search(action='/search', method='get')
-                                input(type='hidden', name='type', value='product')
-                                input#bc-product-search.form-control(type='text', name='q', placeholder='Search', autocomplete='off')
+                                //input(type='hidden', name='type', value='product')
+                                input#bc-product-search.form-control(type='text', name='searchTerm', placeholder='Search', autocomplete='off')
                                 button.search-icon(type='submit')
                             #result-ajax-search.hidden-xs
                                 ul.search-results
+                        script.
+                            $().ready(function () {
+                                if (document.getElementById('bc-product-search').value!=null) {
+                                    document.getElementById('search').action = '/search'+document.getElementById('bc-product-search').value;
+                                }
+                            });
                         .header-text-widget.hidden-xs
                             .widget-description
                                 i.fa.fa-phone

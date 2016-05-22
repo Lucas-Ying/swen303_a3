@@ -83,7 +83,8 @@ var itemListing = function (name, id, image, price, qty) {
 
 router.get('/search', function (req, res, next) {
   //var startIndex = req.request* 2;
-  var search =req.query.q.toLowerCase();
+    var search = req.param('searchTerm').toLowerCase();
+    var sort = req.param('sort');
   /*console.log("Query: " + req.query.q);
   console.log("term: " + req.params.searchTerm);
   if(typeof(req.query.q) != 'undefined'){
@@ -98,7 +99,6 @@ router.get('/search', function (req, res, next) {
   }*/
 
   //var sort = req.param('sort');
-  var sort = " ";
   var query;
   if (sort === "price_asc") {
       query = client.query("SELECT * FROM Items ORDER BY Price Asc", function (err, result) {});
