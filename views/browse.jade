@@ -16,11 +16,11 @@ block content
 					.container
 						h2 #{category} 
 						p Sort By: &nbsp
-							a(href="/browse/price_asc/"+category) Price(Ascending)
+							a(href="/browse?category="+category+"&sort=price_asc") Price(Ascending)
 							| &nbsp &nbsp
-							a(href="/browse/price_desc/"+category) Price(Descending)
+							a(href="/browse?category="+category+"&sort=price_desc") Price(Descending)
 							| &nbsp &nbsp
-							a(href="/browse/name/"+category) Name
+							a(href="/browse?category="+category+"&sort=name") Name
 						br
 						each val, index in results
 							.row
