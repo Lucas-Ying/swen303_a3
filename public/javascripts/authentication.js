@@ -170,7 +170,7 @@ $().ready(function(){
                                 sessionStorage.setItem('userid',data[i].userid);
                                 //console.log(sessionStorage.getItem('username'));
                                 changeLoginName();
-                                alert("Login Successful!");
+                                //alert("Login Successful!");
 
                                 //reset form
                                 $('#loginForm').trigger('reset');
