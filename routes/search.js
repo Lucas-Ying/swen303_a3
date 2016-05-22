@@ -19,7 +19,18 @@ var itemListing = function(name, id, image, price, qty){
 
 router.get('/', function(req, res, next) {
   //var startIndex = req.request* 2;
-  var search = req.query.q.toLowerCase();
+  var search;
+  if(req.query.q){
+    search = req.query.q.toLowerCase();
+  }
+  else if(search){
+    search = req.param.searchTerm.toLowerCase();
+  }
+  else{
+    //TODO error message
+    search = "";
+  }
+
   var sort = req.param('sort');
   var query;
   if (sort === "price_asc") {
@@ -49,7 +60,7 @@ router.get('/', function(req, res, next) {
   //results.splice(startIndex, maxResultsPerPage);
   // After all data is returned, close connection and return results
   query.on('end', function() {
-    res.render('search', { results: results });
+    res.render('search', { results: results, search: search });
   });
 
 

@@ -1,7 +1,7 @@
 extends layout
 
 var results = results;
-var id = 3;
+var search = search;
 //image
 //id
 //name
@@ -20,16 +20,14 @@ block content
                 // main content
                 #main-content.col-md-9
                     .container
-                        table
-                            thead
-                                h2 Search Results
+                      h2 Search Results
                                 p Sort By: &nbsp
-                    							a(href="/search?sort=price_asc") Price(Ascending)
-                    							| &nbsp &nbsp
-                    							a(href="/search?sort=price_desc") Price(Descending)
-                    							| &nbsp &nbsp
-                    							a(href="/search?sort=name") Name
-                    						br
+                                  a(href="/search?sort=price_asc&searchTerm="+search) Price(Ascending)
+                                  | &nbsp &nbsp
+                                  a(href="/search?sort=price_desc&searchTerm="+search) Price(Descending)
+                                  | &nbsp &nbsp
+                                  a(href="/search?sort=name&searchTerm="+search) Name
+                                br
                                 each val, index in results
                                   .row
                                     .col-sm-6.col-md-4
