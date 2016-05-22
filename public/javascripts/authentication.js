@@ -167,6 +167,7 @@ $().ready(function(){
                                 location.href = '/?account_id='+data[i].userid;
                                 sessionStorage.setItem('useremail', data[i].email);
                                 sessionStorage.setItem('username',data[i].userhandle);
+                                sessionStorage.setItem('userid',data[i].userid);
                                 //console.log(sessionStorage.getItem('username'));
                                 changeLoginName();
                                 alert("Login Successful!");
