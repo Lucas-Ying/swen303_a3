@@ -15,6 +15,7 @@ var checkout = require('./routes/checkout');
 var shopping_cart = require('./routes/shopping_cart');
 var deals = require('./routes/deals');
 var modify_listing = require('./routes/modify_listing');
+var purchase_confirmation = require('./routes/purchase_confirmation');
 
 
 var app = express();
@@ -41,7 +42,7 @@ app.use('/checkout', checkout);
 app.use('/shopping_cart', shopping_cart);
 app.use('/deals', deals);
 app.use('/modify_listing', modify_listing);
-
+app.use('/purchase_confirmation', purchase_confirmation );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

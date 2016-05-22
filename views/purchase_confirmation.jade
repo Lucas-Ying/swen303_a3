@@ -1,3 +1,18 @@
-//
-   Created by andrew on 22/05/16.
+extends layout
 
+block header
+    include header
+
+block content
+    #body-content
+        .container
+            .row
+                include sidebar
+                // main content
+                #main-content.col-md-9
+                    .container
+                        table
+                            thead
+                                h1 Purchase complete!
+                            tbody
+                                p  You have bought the #{item_name}
