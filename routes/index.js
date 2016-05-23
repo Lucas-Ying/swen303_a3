@@ -379,7 +379,7 @@ router.get('/purchase_confirmation', function(req, res, next) {
   });
   query.on('end', function () {
 
-    var findIndex = client.query("SELECT MAX(ListingId) FROM Items");
+    var findIndex = client.query("SELECT MAX(transactions) FROM Transactions");
     var index;
     var newIndex;
 
