@@ -7,6 +7,19 @@ block content
     #body-content
         .container
             .row
+                if (item_name)
+                    #breadcrumb.breadcrumb-holder
+                        .col-md-6.col-sm-6.col-xs-12
+                            .page-title #{categories}
+                        .col-md-6.col-sm-6.col-xs-12
+                            ul.breadcrumb
+                                li
+                                    a(itemprop='url', href='/')
+                                        span
+                                        | Home
+                                li
+                                    a(href='/browse?category='+categories)
+                                        span(itemprop='title') #{categories}
                 include sidebar
                 // main content
                 #main-content.col-md-9
@@ -50,99 +63,101 @@ block content
                     //        a.btn.btn-success(href='/', role='button') Return to homepage
                     if (item_name)
                         #col-main.page-product.product-single
-                            .product
-                                .row
-                                    // Begin #product-image
-                                    #product-image.col-sm-12.col-md-6.product-image
-                                        if (images)
-                                            img(src='#{images}'  width='90%' style='margin:10px 5px')
-                                        if (images2)
-                                            img(src='#{images2}' width='90%' style='margin:10px 5px')
-                                        if (images3)
-                                            img(src='#{images3}' width='90%' style='margin:10px 5px')
-                                        if (images4)
-                                            img(src='#{images4}' width='90%' style='margin:10px 5px')
-                                        if (images5)
-                                            img(src='#{images5}' width='90%' style='margin:10px 5px')
-                                        if (images6)
-                                            img(src='#{images6}' width='90%' style='margin:10px 5px')
-                                    // End #product-image /-
-                                    // Begin #product-info
-                                    #product-info.col-sm-12.col-md-6.product-info
-                                        div
-                                            h1.page-heading #{item_name}
-                                            .rating-links
-                                                span.spr-badge(data-rating='0.0')
-                                                    span.spr-starrating.spr-badge-starrating
-                                                        i.spr-icon.spr-icon-star-empty(style='')
-                                                        i.spr-icon.spr-icon-star-empty(style='')
-                                                        i.spr-icon.spr-icon-star-empty(style='')
-                                                        i.spr-icon.spr-icon-star-empty(style='')
-                                                        i.spr-icon.spr-icon-star-empty(style='')
-                                                    span.spr-badge-caption
-                                                        | No reviews
-                                            .product-price
-                                                .detail-price
-                                                    del.price-compare
-                                                        span.money $#{price}
-                                                    span.price-sale
-                                                        span.money $#{price*0.9}
-                                            .short-description
-                                                | #{desc}
-                                            -var wishlistClick = "window.location='/product_details/" + id + "'"
-                                            button.btn.add-to-wishlist(type='button', onclick=wishlistClick, title='Add to wishlist')
-                                                span
-                                                | Add to wishlist
-                                            .group-cw
-                                                .product-action.variants
-                                                    .options
-                                                        .qty-add-cart
-                                                            .action-button
-                                                                a.add-to-cart.btn.btn-default(href='/purchase_confirmation?id='+id, role='button') Buy Now
-                                            .product-availability-wrapper
-                                                ul.list-unstyled
-                                                    li
-                                                        span Sold By:
-                                                        |                       Seller: No.#{sellerID}
-                                                    li.product-sku
-                                                        if numItems === 0
-                                                            span Product Sku: #{numItems}
+                            .padding-top-space
+                                .product
+                                    .row
+                                        // Begin #product-image
+                                        #product-image.col-sm-12.col-md-6.product-image
+                                            if (images)
+                                                img(src='#{images}'  width='90%' style='margin:10px 5px')
+                                            if (images2)
+                                                img(src='#{images2}' width='90%' style='margin:10px 5px')
+                                            if (images3)
+                                                img(src='#{images3}' width='90%' style='margin:10px 5px')
+                                            if (images4)
+                                                img(src='#{images4}' width='90%' style='margin:10px 5px')
+                                            if (images5)
+                                                img(src='#{images5}' width='90%' style='margin:10px 5px')
+                                            if (images6)
+                                                img(src='#{images6}' width='90%' style='margin:10px 5px')
+                                        // End #product-image /-
+                                        // Begin #product-info
+                                        #product-info.col-sm-12.col-md-6.product-info
+                                            div
+                                                h1.page-heading #{item_name}
+                                                .rating-links
+                                                    span.spr-badge(data-rating='0.0')
+                                                        span.spr-starrating.spr-badge-starrating
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                        span.spr-badge-caption
+                                                            | No reviews
+                                                .product-price
+                                                    .detail-price
+                                                        del.price-compare
+                                                            span.money $#{price}
+                                                        span.price-sale
+                                                            -var discountPrice = parseFloat(price*0.9).toFixed(2);
+                                                            span.money() $#{discountPrice}
+                                                .short-description
+                                                    | #{desc}
+                                                -var wishlistClick = "window.location='/product_details/" + id + "'"
+                                                button.btn.add-to-wishlist(type='button', onclick=wishlistClick, title='Add to wishlist')
+                                                    span
+                                                    | Add to wishlist
+                                                .group-cw
+                                                    .product-action.variants
+                                                        .options
+                                                            .qty-add-cart
+                                                                .action-button
+                                                                    a.add-to-cart.btn.btn-default(href='/purchase_confirmation?id='+id, role='button') Buy Now
+                                                .product-availability-wrapper
+                                                    ul.list-unstyled
+                                                        li
+                                                            span Sold By:
+                                                            |                       Seller: No.#{sellerID}
+                                                        li.product-sku
+                                                            if numItems === 0
+                                                                span Product Sku: #{numItems}
+                                                                    span#sku
+                                                                span(style = "color:RED;") &nbsp &nbsp &nbsp &nbsp &nbsp This item is sold out.
+                                                            if numItems >= 1 & numItems <= 3
+                                                                span Product Sku: #{numItems}
+                                                                    span#sku
+                                                                span(style = "color:RED;") &nbsp &nbsp &nbsp &nbsp &nbsp Only #{numItems} remaining!
+                                                            if numItems > 3
+                                                                span Product Sku: #{numItems}
                                                                 span#sku
-                                                            span(style = "color:RED;") &nbsp &nbsp &nbsp &nbsp &nbsp This item is sold out.
-                                                        if numItems >= 1 & numItems <= 3
-                                                            span Product Sku: #{numItems}
-                                                                span#sku
-                                                            span(style = "color:RED;") &nbsp &nbsp &nbsp &nbsp &nbsp Only #{numItems} remaining!
-                                                        if numItems > 3
-                                                            span Product Sku: #{numItems}
-                                                            span#sku
-                                                    li
-                                                        span Categories:
-                                                        |                       #{categories}
-                                            .share-links.social-sharing
-                                                ul.list-inline
-                                                    li
-                                                        a(target='_blank', href='//www.facebook.com/sharer.php?u=http://goshop/product_details/' + id, title='Facebook')
-                                                            i.fa.fa-facebook
-                                                    li
-                                                        a(target='_blank', href='//twitter.com/share?url=http://goshop/product_details/' + id, title='Twitter')
-                                                            i.fa.fa-twitter
-                                            // endif product.avaiable /-
-                                    // End #product-info /-
-                            // End .product /-
-                            .product-simple-tab
-                                div(role='tabpanel')
-                                    // Nav tabs
-                                    ul.nav.nav-tabs(role='tablist')
-                                        li.active(role='presentation')
-                                            a(href='#tab_detail', aria-controls='tab_detail', role='tab', data-toggle='tab') Description
-                                        li(role='presentation')
-                                            a(href='#tab_sc', aria-controls='tab_sc', role='tab', data-toggle='tab') Shipping & Return
-                                    // Tab panes
-                                    .tab-content
-                                        #tab_detail.tab-pane.active(role='tabpanel')
-                                            p
-                                                | #{desc}
-                                        #tab_sc.tab-pane(role='tabpanel')
-                                            p
-                                                | Shipping fee : $ 8.00
+                                                        li
+                                                            span Categories:
+                                                            |                       #{categories}
+                                                .share-links.social-sharing
+                                                    ul.list-inline
+                                                        li
+                                                            a(target='_blank', href='//www.facebook.com/sharer.php?u=http://goshop/product_details/' + id, title='Facebook')
+                                                                i.fa.fa-facebook
+                                                        li
+                                                            a(target='_blank', href='//twitter.com/share?url=http://goshop/product_details/' + id, title='Twitter')
+                                                                i.fa.fa-twitter
+                                                // endif product.avaiable /-
+                                        // End #product-info /-
+                                // End .product /-
+                                .product-simple-tab
+                                    div(role='tabpanel')
+                                        // Nav tabs
+                                        ul.nav.nav-tabs(role='tablist')
+                                            li.active(role='presentation')
+                                                a(href='#tab_detail', aria-controls='tab_detail', role='tab', data-toggle='tab') Description
+                                            li(role='presentation')
+                                                a(href='#tab_sc', aria-controls='tab_sc', role='tab', data-toggle='tab') Shipping & Return
+                                        // Tab panes
+                                        .tab-content
+                                            #tab_detail.tab-pane.active(role='tabpanel')
+                                                p
+                                                    | #{desc}
+                                            #tab_sc.tab-pane(role='tabpanel')
+                                                p
+                                                    | Shipping fee : $ 8.00

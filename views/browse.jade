@@ -87,7 +87,8 @@ block content
                                                     span.price-compare
                                                         span.money $#{val.price}
                                                     span.price-sale
-                                                        span.money $#{val.price*0.9}
+                                                        -var discountPrice = parseFloat(val.price*0.9).toFixed(2);
+                                                        span.money $#{discountPrice}
                                                 .add-cart-button
                                                     a.btn-default.select-options(href="/product_details/" + val.listingId, title='Select options')
                                                         i.fa.fa-shopping-cart

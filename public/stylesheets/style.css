@@ -1,6 +1,4 @@
 
-
-
 html {
     -webkit-font-smoothing: antialiased;
     height: 100%;
@@ -344,6 +342,10 @@ a, a:link, a:hover, a:active {
 
 .navigation > nav > ul > li.mega-menu {
     position: relative;
+}
+
+.padding-top-space {
+    margin: 35px auto 0;
 }
 
 .main-nav .mega-menu > .dropdown-menu {
@@ -9304,7 +9306,6 @@ h2.heading, .semi-bold {
 
 .breadcrumb-holder {
     padding: 28px 0;
-    margin: 0px -15px;
     position: relative;
     z-index: 4;
     overflow: hidden;
