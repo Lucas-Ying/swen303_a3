@@ -1,37 +1,93 @@
 extends layout
 
 block header
-	include header
+    include header
 
 block content
-	#body-content
-		.container
-			.row
-				// sidebar
-				include sidebar
-				// main content
-				#main-content.col-md-9
+    #body-content
+        .container
+            .row
+                // sidebar
+                include sidebar
+                // main content
+                #main-content.col-md-9
 
 
-					.container
-						h2 #{category} 
-						p Sort By: &nbsp
-							a(href="/browse?category="+category+"&sort=price_asc") Price(Ascending)
-							| &nbsp &nbsp
-							a(href="/browse?category="+category+"&sort=price_desc") Price(Descending)
-							| &nbsp &nbsp
-							a(href="/browse?category="+category+"&sort=name") Name
-						br
-						each val, index in results
-							.row
-								.col-sm-6.col-md-4
-									a(href="/product_details/" + val.listingId)
-										.thumbnail
-											if(val.imagesrc)
-												img(src=val.imagesrc, height = "200", width="200")
-											.caption
-												h3 #{val.name}
-												p $#{val.price}
-													
-						
-					
+                    //.container
+                    //    h2 #{category}
+                    //    p Sort By: &nbsp
+                    //        a(href="/browse?category=" + category + "&sort=price_asc") Price(Ascending)
+                    //        | &nbsp &nbsp
+                    //        a(href="/browse?category=" + category + "&sort=price_desc") Price(Descending)
+                    //        | &nbsp &nbsp
+                    //        a(href="/browse?category=" + category + "&sort=name") Name
+                    //    br
+                    //    each val, index in results
+                    //        if(val)
+                    //            h1 has
+                    //        .row
+                    //            .col-sm-6.col-md-4
+                    //                a(href="/product_details/" + val.listingId)
+                    //                    .thumbnail
+                    //                        if(val.imagesrc)
+                    //                            img(src=val.imagesrc, height = "200", width="200")
+                    //                        .caption
+                    //                            h3 #{val.name}
+                    //                            p $#{val.price}
+
+                    #col-main
+                        h1 #{category}
+                        .cata-toolbar
+                            .group-toolbar
+                                .pagination-showing
+                                    | Showing #{results.length} products
+                                .sort-by
+                                    p Sort By: &nbsp
+                                        a(href="/browse?category=" + category + "&sort=price_asc") Price(Ascending)
+                                        | &nbsp &nbsp
+                                        a(href="/browse?category=" + category + "&sort=price_desc") Price(Descending)
+                                        | &nbsp &nbsp
+                                        a(href="/browse?category=" + category + "&sort=name") Name
+                        .cata-product.cp-grid.clearfix
+                            each val, index in results
+                                .product-grid-item.product-price-range(data-price=val.price)
+                                    .product-wrapper
+                                        .product-head
+                                            .product-image
+                                                .featured-img.switch
+                                                    a(href="/product_details/" + val.listingId)
+                                                        if(val.imagesrc)
+                                                            img.featured-image.front.img-browse(src=val.imagesrc)
+                                                        span.hidden-sm.hidden-xs
+                                                            if(val.imagesrc)
+                                                                img.back.img-browse(src=val.imagesrc)
+                                                        span.product-label
+                                                            span.label-sale
+                                                                span.sale-text -10%
+                                                .product-button
+                                                    .product-wishlist
+                                                        -var clickEvent = "window.location='/product_details/" + val.listingId + "'"
+                                                        button.add-to-wishlist.btn.btn-default(type='button', onclick=clickEvent, title='Add to wishlist')
+                                                            span
+                                        .product-content
+                                            .pc-inner
+                                                h5.product-name(style='height: 37px;')
+                                                    a(href="/product_details/" + val.listingId) #{val.name}
+                                                .product-review
+                                                    span#spr_badge_5496621447.spr-badge(data-rating='0.0')
+                                                        span.spr-starrating.spr-badge-starrating
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                            i.spr-icon.spr-icon-star-empty(style='')
+                                                        span.spr-badge-caption
+                                                            | No reviews
+                                                .product-price
+                                                    span.price-compare
+                                                        span.money $#{val.price}
+                                                    span.price-sale
+                                                        span.money $#{val.price*0.9}
+                                                .add-cart-button
+                                                    a.btn-default.select-options(href="/product_details/" + val.listingId, title='Select options')
+                                                        i.fa.fa-shopping-cart
