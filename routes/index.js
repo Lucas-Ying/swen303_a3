@@ -154,6 +154,7 @@ router.get('/product_details/:id', function(req, res, next) {
   var images4;
   var images5;
   var images6;
+  var categories;
 
   // Stream results back one row at a time
   query.on('row', function(row) {
@@ -171,6 +172,7 @@ router.get('/product_details/:id', function(req, res, next) {
       price = row.price;
       numItems = row.numitems;
       sellerID = row.sellerid;
+      categories = row.categories;
     }
   });
   query.on('end', function() {
@@ -187,7 +189,8 @@ router.get('/product_details/:id', function(req, res, next) {
           images3: images3,
           images4: images4,
           images5: images5,
-          images6: images6
+          images6: images6,
+          categories: categories
         });
   });
 
